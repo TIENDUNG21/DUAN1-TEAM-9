@@ -1,7 +1,6 @@
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
-    // Get input values
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
