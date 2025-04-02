@@ -10,10 +10,11 @@
                 <form action="/index.php" method="GET">
                     <input type="hidden" name="action" value="search">
                     <input type="text" name="search" id="searching" placeholder="Tìm kiếm" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>" />
-                    <button type="submit" class="btn">
-                        <span class="material-symbols-outlined">Search</span>
-                    </button>
+                    
                 </form>
+                <!-- <button type="submit" class="btn">
+                        <span class="material-symbols-outlined">Search</span>
+                    </button> -->
             </div>
                 <a href="/"><span class="material-symbols-outlined">Home</span></a>
                 <?php 
