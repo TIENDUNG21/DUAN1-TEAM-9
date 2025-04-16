@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th3 23, 2025 lúc 05:54 AM
+-- Thời gian đã tạo: Th4 02, 2025 lúc 03:56 PM
 -- Phiên bản máy phục vụ: 8.0.30
--- Phiên bản PHP: 8.1.10
+-- Phiên bản PHP: 8.2.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,6 +59,42 @@ INSERT INTO `categories` (`category_id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `comments`
+--
+
+INSERT INTO `comments` (`id`, `user_id`, `product_id`, `content`, `created_at`) VALUES
+(1, 12, 3, 'kk', '2025-04-02 12:50:56'),
+(2, 12, 3, 'kk', '2025-04-02 12:51:04'),
+(3, 12, 3, 'kk', '2025-04-02 12:51:13'),
+(4, 12, 3, 'kk', '2025-04-02 12:52:03'),
+(5, 12, 3, 'kk', '2025-04-02 12:53:28'),
+(6, 12, 3, 'kk', '2025-04-02 12:55:33'),
+(7, 12, 3, 'kk', '2025-04-02 12:56:35'),
+(8, 12, 3, 'kk', '2025-04-02 13:00:26'),
+(9, 12, 3, 'kk\r\n', '2025-04-02 13:00:31'),
+(10, 12, 3, 'hh', '2025-04-02 13:01:27'),
+(11, 12, 3, 'hhhhhh', '2025-04-02 13:01:58'),
+(12, 12, 3, 'kk', '2025-04-02 13:02:05'),
+(13, 12, 3, 'kk', '2025-04-02 13:03:02'),
+(14, 12, 3, 'hưng kiều', '2025-04-02 13:06:10'),
+(15, 12, 8, 'kk', '2025-04-02 13:08:34'),
+(16, 12, 3, 'kk', '2025-04-02 13:10:47');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `orders`
 --
 
@@ -81,7 +117,12 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`order_id`, `user_id`, `full_name`, `email`, `phone`, `address`, `total_amount`, `status`, `created_at`) VALUES
 (3, 4, 'dungtest', 'dungptph49495@gmail.com', '0787140137', 'xzczxc\r\nzxc', 3600000.00, 'Đang giao', '2025-03-22 07:16:20'),
 (4, 6, 'dungtest', 'fpolyduan@gmail.com', '0826483753', 'xzczxc\r\nzxc', 162000.00, 'Chờ xác nhận', '2025-03-22 08:34:32'),
-(5, 6, 'dungtest2', 'dungtest@gmail.com', '093745638547', 'xzczxc\r\nzxc', 1200000.00, 'Chờ xác nhận', '2025-03-22 08:49:56');
+(5, 6, 'dungtest2', 'dungtest@gmail.com', '093745638547', 'xzczxc\r\nzxc', 1200000.00, 'Chờ xác nhận', '2025-03-22 08:49:56'),
+(9, 12, 'Phi Hung', 'hungpkph49841@gmail.com', '0346342005', 'Hanoi', 4000000.00, 'Chờ xác nhận', '2025-03-31 11:33:21'),
+(10, 12, 'Phi Hung', 'hungpkph49841@gmail.com', '0346342005', 'Hanoi', 2000000.00, 'Chờ xác nhận', '2025-03-31 11:42:49'),
+(12, 12, 'Phi Hung', 'hungpkph49841@gmail.com', '0346342005', 'Hanoi', 2000000.00, 'Chờ xác nhận', '2025-03-31 11:49:25'),
+(13, 12, 'Phi Hung', 'hungpkph49841@gmail.com', '0346342005', 'Hanoi', 2000000.00, 'Chờ xác nhận', '2025-03-31 11:51:32'),
+(14, 12, 'Phi Hung', 'hungpkph49841@gmail.com', '0346342005', 'Hanoi', 3500000.00, 'Chờ xác nhận', '2025-04-02 11:53:50');
 
 -- --------------------------------------------------------
 
@@ -107,7 +148,14 @@ INSERT INTO `order_details` (`detail_id`, `order_id`, `product_id`, `quantity`, 
 (3, 3, 4, 1, 1200000.00, '37', 'Trắng'),
 (4, 3, 4, 1, 1200000.00, '38', 'Trắng'),
 (5, 3, 4, 1, 1200000.00, '39', 'Đen'),
-(8, 5, 4, 1, 1200000.00, '37', 'Trắng');
+(8, 5, 4, 1, 1200000.00, '37', 'Trắng'),
+(12, 9, 3, 1, 2000000.00, '38', 'Xám'),
+(13, 9, 3, 1, 2000000.00, '38', 'Xám'),
+(14, 10, 3, 1, 2000000.00, '38', 'Xám'),
+(16, 12, 3, 1, 2000000.00, '38', 'Xám'),
+(17, 13, 3, 1, 2000000.00, '38', 'Xám'),
+(18, 14, 8, 1, 2300000.00, 'S', 'Đen trắng'),
+(19, 14, 4, 1, 1200000.00, '37', 'Trắng');
 
 -- --------------------------------------------------------
 
@@ -136,7 +184,9 @@ INSERT INTO `products` (`product_id`, `category_id`, `name`, `description`, `pri
 (2, 2, 'Adidas Ultraboost', 'Giày chạy bộ cao cấp với công nghệ Boost, mang lại cảm giác êm ái.', 2500000.00, NULL, 0, 'Mencco.jpg', '2025-03-21 06:13:19'),
 (3, 2, 'Puma RS-X', 'Giày thể thao phong cách retro, nổi bật với màu sắc hiện đại.', 2000000.00, 3000000.00, 1, 'Mencco.jpg', '2025-03-21 06:13:19'),
 (4, 1, 'Converse Chuck Taylor', 'Giày vải cổ điển, phù hợp cho cả nam và nữ.', 1200000.00, 1800000.00, 1, 'Mencco.jpg', '2025-03-21 06:13:19'),
-(7, 5, 'dung test 1', 'dung test 1', 31000.00, 30000.00, 1, '', '2025-03-22 09:02:53');
+(8, 1, 'Giày thể thao sneaker', 'Giày thể thao giá rẻ', 2300000.00, 4200000.00, 1, 'giay1.jpg', '2025-03-31 11:37:35'),
+(10, 1, 'Giày thẻ thao nữ', 'Giày Thể Thao HồngLowtop Zoe (Giày Sneaker Hồng- LT001) giúp bạn luôn cảm thấy tự tin, thoải mái và thời trang mỗi bước đi. Phong cách giày sneaker basic phù hợp với nhiều đối tượng khác nhau, từ các bạn trẻ yêu thể thao đến những người yêu thích phong cách đơn giản và trẻ trung. Là sự lựa chọn hoàn hảo cho những buổi dạo phố, đi chơi hoặc thậm chí là cho những buổi đi làm casual.', 364000.00, 800000.00, 1, '17272523427143851(1).webp', '2025-03-31 12:05:01'),
+(11, 1, 'ưadwdawwadawd', '', 123000.00, 123.00, 0, '17272523222407712_512.webp', '2025-03-31 12:26:34');
 
 -- --------------------------------------------------------
 
@@ -174,8 +224,8 @@ INSERT INTO `product_variants` (`variant_id`, `product_id`, `size`, `color`, `st
 (12, 4, '37', 'Trắng', 12, NULL, NULL, NULL),
 (13, 4, '38', 'Đen', 8, NULL, NULL, NULL),
 (14, 4, '39', 'Xanh Navy', 5, 1300000.00, 1900000.00, 1),
-(20, 7, '33', 'Xanh', 3, 23000.00, 24000.00, 1),
-(21, 7, '55', 'Đỏ', 3, 45000.00, 55000.00, 1);
+(22, 8, 'S', 'Đen trắng', 20, NULL, NULL, 0),
+(24, 10, 'M', 'Hồng', 10, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -267,7 +317,8 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `role`, `full_n
 (3, 'dungtest2', '123', 'dungtest2@example.com', 0, 'Dũng test2', '0923456789', 'FPOLY hanoi', '2025-03-01 02:00:00', '2025-03-21 14:57:46', '0', ''),
 (4, 'dungtest3', '123', 'dungtest3@example.com', 1, 'dungtest3', '09416118832', 'xzczxc\r\nzxc', '2025-03-21 07:26:49', '2025-03-21 00:00:00', 'male', ''),
 (6, 'dungtest4', '123', 'dungtest4@gmail.com', 0, 'dũng test4', '1234567891', 'xzczxc\r\nzxc', '2025-03-22 08:31:28', '2008-10-19 00:00:00', 'male', ''),
-(11, 'phamtiendung', '$2y$10$F8nz9Ihr9U6KxMsviNd.suscXMKl2ZqHtXcWS2.wkzMNxLM8zEZJi', 'dungptph49495@gmail.com', 1, 'Phạm Tiến Dũng', '0123456789', 'FPOLY HANOI', '2025-03-23 04:55:11', NULL, NULL, '1742705871_Hinh-nen-may-man-tai-loc-cho-may-tinh-1.jpg');
+(11, 'phamtiendung', '$2y$10$F8nz9Ihr9U6KxMsviNd.suscXMKl2ZqHtXcWS2.wkzMNxLM8zEZJi', 'dungptph49495@gmail.com', 1, 'Phạm Tiến Dũng', '0123456789', 'FPOLY HANOI', '2025-03-23 04:55:11', NULL, NULL, '1742705871_Hinh-nen-may-man-tai-loc-cho-may-tinh-1.jpg'),
+(12, 'kieuhung205', '$2y$10$vG3q/5t6G7XIlpWDvXfvx.yqZ7Nymb4Su29e.D.zq3WFX4NKPPd3u', 'hungpkph49841@gmail.com', 0, NULL, '0346342005', NULL, '2025-03-31 11:32:35', NULL, NULL, NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -284,6 +335,14 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`);
+
+--
+-- Chỉ mục cho bảng `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Chỉ mục cho bảng `orders`
@@ -358,28 +417,34 @@ ALTER TABLE `categories`
   MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT cho bảng `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `detail_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `detail_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `product_variants`
 --
 ALTER TABLE `product_variants`
-  MODIFY `variant_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `variant_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `promotions`
@@ -403,11 +468,18 @@ ALTER TABLE `support`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Các ràng buộc cho bảng `orders`
